@@ -356,17 +356,17 @@ if (isset ($_SESSION['user_id'])) {
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script>
-        // window.onload = function () {
-        //     window.print();
-        // };
+        window.onload = function () {
+         window.print();
+         };
 
-        // window.onafterprint = function (e) {
-        //     closePrintView();
-        // };
+         window.onafterprint = function (e) {
+             closePrintView();
+         };
 
-        // function closePrintView() {
-        //     window.location.href = 'queue.php';
-        // }
+         function closePrintView() {
+             window.location.href = 'queue.php';
+         }
     </script>
 </body>
 
