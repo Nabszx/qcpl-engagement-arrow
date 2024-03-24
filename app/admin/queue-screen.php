@@ -189,9 +189,14 @@ if (($user_role_id_session !== 1) && ($user_role_id_session !== 2)) {
 
 
     <script>
-       $(document).ready(function () {
+$(document).ready(function () {
     // Initialize DataTables outside of AJAX
-    var dataTable = $('#datatable').DataTable();
+    var dataTable = $('#datatable').DataTable({
+        paging: true,
+        pageLength: 10 // Change this according to your needs
+    });
+
+    var currentPage = 1; // Initialize current page
 
     function fetchQueueData() {
         $.ajax({
@@ -200,6 +205,9 @@ if (($user_role_id_session !== 1) && ($user_role_id_session !== 2)) {
             dataType: 'json',
             success: function (data) {
                 var tableBody = $('#datatable tbody');
+                // Store current page before clearing the table
+                currentPage = dataTable.page.info().page + 1;
+
                 // Clear existing table data
                 dataTable.clear().draw();
 
@@ -223,6 +231,9 @@ if (($user_role_id_session !== 1) && ($user_role_id_session !== 2)) {
                     // Clear table body and append "No records found" message
                     tableBody.empty().append('<tr><td colspan="10" class="text-center">No records found.</td></tr>');
                 }
+
+                // Go to the stored page after redrawing the table
+                dataTable.page(currentPage - 1).draw('page');
             },
             error: function (xhr, status, error) {
                 console.error(xhr.responseText);
@@ -247,6 +258,7 @@ if (($user_role_id_session !== 1) && ($user_role_id_session !== 2)) {
         $('#edit_queue_number').val(data[3]);
     });
 });
+
 
     </script>
 </body>
