@@ -189,7 +189,7 @@ if (($user_role_id_session !== 1)) {
                                         INNER JOIN 
                                             queue_details ON client.client_id = queue_details.client_id
                                             WHERE 
-                                                                                    DATE(client.created_at) = CURDATE()
+                                            DATE(client.created_at) = CURDATE()
                                         GROUP BY 
                                             age.age_range, client.gender, client.education, client.occupation, client.status, queue_details.service
                                         ORDER BY
@@ -580,13 +580,7 @@ if (($user_role_id_session !== 1)) {
 
             <!-- end of data analysis of age -->
 
-
-
-
-
-
-
-
+            <!-- start of gender analysis -->
             <?php
             if (isset($_GET['filter'])) {
                 $filter = $_GET['filter'];
@@ -599,7 +593,7 @@ if (($user_role_id_session !== 1)) {
               UNION
               SELECT 'Female'
               UNION
-              SELECT 'Other'
+              SELECT 'Others'
             ) AS all_genders
             LEFT JOIN client ON all_genders.gender = client.gender AND DATE(client.created_at) = CURDATE()
             GROUP BY all_genders.gender
@@ -612,7 +606,7 @@ if (($user_role_id_session !== 1)) {
                               UNION
                               SELECT 'Female'
                               UNION
-                              SELECT 'Other'
+                              SELECT 'Others'
                             ) AS all_genders
                             LEFT JOIN client ON all_genders.gender = client.gender AND client.created_at >= CURRENT_DATE - INTERVAL 7 DAY 
                             GROUP BY all_genders.gender;";
@@ -635,7 +629,7 @@ if (($user_role_id_session !== 1)) {
                 UNION
                 SELECT 'Female'
                 UNION
-                SELECT 'Other'
+                SELECT 'Others'
             ) AS all_genders
             LEFT JOIN client ON all_genders.gender = client.gender AND MONTH(client.created_at) = $filter
             GROUP BY all_genders.gender;
@@ -649,7 +643,7 @@ if (($user_role_id_session !== 1)) {
                 UNION
                 SELECT 'Female'
                 UNION
-                SELECT 'Other'
+                SELECT 'Others'
             ) AS all_genders
             LEFT JOIN client ON all_genders.gender = client.gender AND YEAR(client.created_at) = $filter
             GROUP BY all_genders.gender;";
@@ -662,7 +656,7 @@ if (($user_role_id_session !== 1)) {
       UNION
       SELECT 'Female'
       UNION
-      SELECT 'Other'
+      SELECT 'Others'
     ) AS all_genders
     LEFT JOIN client ON all_genders.gender = client.gender
     GROUP BY all_genders.gender;";
@@ -787,7 +781,7 @@ if (($user_role_id_session !== 1)) {
               UNION
               SELECT 'College Graduate'
               UNION
-              SELECT 'Master''s Degree' -- Corrected single quote usage
+              SELECT 'Master' 's Degree' -- Corrected single quote usage
               UNION
               SELECT 'Doctorate Degree'
               UNION
@@ -810,7 +804,7 @@ if (($user_role_id_session !== 1)) {
                               UNION
                               SELECT 'College Graduate'
                               UNION
-                              SELECT 'Master''s Degree' -- Corrected single quote usage
+                              SELECT 'Master' 's Degree' -- Corrected single quote usage
                               UNION
                               SELECT 'Doctorate Degree'
                               UNION
@@ -843,7 +837,7 @@ if (($user_role_id_session !== 1)) {
               UNION
               SELECT 'College Graduate'
               UNION
-              SELECT 'Master''s Degree' -- Corrected single quote usage
+              SELECT 'Master' 's Degree' -- Corrected single quote usage
               UNION
               SELECT 'Doctorate Degree'
               UNION
@@ -867,7 +861,7 @@ if (($user_role_id_session !== 1)) {
               UNION
               SELECT 'College Graduate'
               UNION
-              SELECT 'Master''s Degree' -- Corrected single quote usage
+              SELECT 'Master' 's Degree' -- Corrected single quote usage
               UNION
               SELECT 'Doctorate Degree'
               UNION
@@ -890,7 +884,7 @@ if (($user_role_id_session !== 1)) {
       UNION
       SELECT 'College Graduate'
       UNION
-      SELECT 'Master''s Degree' -- Corrected single quote usage
+      SELECT 'Master' 's Degree' -- Corrected single quote usage
       UNION
       SELECT 'Doctorate Degree'
       UNION
