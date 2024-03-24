@@ -256,7 +256,7 @@ if (($user_role_id_session !== 1) && ($user_role_id_session !== 2)) {
                                             LEFT JOIN 
                                                 feedback ON client.client_id = feedback.client_id 
                                             WHERE 
-                                                queue_details.service NOT IN ('NBI', 'Police') AND DATE(client.created_at) = CURDATE()  
+                                                queue_details.service NOT IN ('NBI', 'Police') AND queue_details.`status` = 1 AND DATE(client.created_at) = CURDATE()  
                                             GROUP BY 
                                                 Name, Age, client.Gender
                                             ORDER BY 
@@ -284,7 +284,7 @@ if (($user_role_id_session !== 1) && ($user_role_id_session !== 2)) {
                                             LEFT JOIN 
                                                 feedback ON client.client_id = feedback.client_id 
                                             WHERE 
-                                                queue_details.service NOT IN ('NBI', 'Police') AND client.created_at >= CURRENT_DATE - INTERVAL 7 DAY 
+                                                queue_details.service NOT IN ('NBI', 'Police') AND queue_details.`status` = 1 AND client.created_at >= CURRENT_DATE - INTERVAL 7 DAY 
                                             GROUP BY 
                                                 Name, Age, client.Gender
                                             ORDER BY 
@@ -323,7 +323,7 @@ if (($user_role_id_session !== 1) && ($user_role_id_session !== 2)) {
                                             LEFT JOIN 
                                                 feedback ON client.client_id = feedback.client_id 
                                             WHERE 
-                                                queue_details.service NOT IN ('NBI', 'Police') AND MONTH(client.created_at) = $filter 
+                                                queue_details.service NOT IN ('NBI', 'Police') AND queue_details.`status` = 1 AND MONTH(client.created_at) = $filter 
                                             GROUP BY 
                                                 Name, Age, client.Gender
                                             ORDER BY 
@@ -351,7 +351,7 @@ if (($user_role_id_session !== 1) && ($user_role_id_session !== 2)) {
                                             LEFT JOIN 
                                                 feedback ON client.client_id = feedback.client_id 
                                             WHERE 
-                                                queue_details.service NOT IN ('NBI', 'Police') AND YEAR(client.created_at) = $filter
+                                                queue_details.service NOT IN ('NBI', 'Police') AND queue_details.`status` = 1 AND YEAR(client.created_at) = $filter
                                             GROUP BY 
                                                 Name, Age, client.Gender
                                             ORDER BY 
@@ -380,7 +380,7 @@ if (($user_role_id_session !== 1) && ($user_role_id_session !== 2)) {
                                     LEFT JOIN 
                                         feedback ON client.client_id = feedback.client_id 
                                     WHERE 
-                                        queue_details.service NOT IN ('NBI', 'Police')
+                                        queue_details.service NOT IN ('NBI', 'Police') AND queue_details.`status` = 1
                                     GROUP BY 
                                         Name, Age, client.Gender
                                     ORDER BY 
