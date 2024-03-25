@@ -116,6 +116,12 @@ if (isset ($_SESSION['user_id'])) {
                                 <?= $queue_no ?>
                             </h4>
                         </div>
+                        <div class="GENDER_CLASS">
+                            <label>Gender:</label>
+                            <label>
+                                <?= $gender ?>
+                            </label>
+                        </div>
                     </div>
                 </div>
 
@@ -152,12 +158,12 @@ if (isset ($_SESSION['user_id'])) {
 
                             <p>
                         </div>
-                        <div class="GENDER_CLASS">
+                        <!-- <div class="GENDER_CLASS">
                             <label>Gender:</label>
                             <label>
                                 <?= $gender ?>
                             </label>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
