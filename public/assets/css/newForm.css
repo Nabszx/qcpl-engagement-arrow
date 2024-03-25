@@ -142,7 +142,7 @@ body {
 
 .contact-header {
     position: relative;
-    top: 11.25rem;
+    top: 11.75rem;
 }
 
 .middle-name {
@@ -153,6 +153,24 @@ body {
     padding: 0;
 }
 
+.q-number {
+    font-size: 2.188rem;
+}
+
+/* .NEW_MARGIN {
+    margin-bottom: 0;
+    padding-bottom: 0;
+} */
+
+.flex-class-gender{
+    display: flex;
+}
+
+.GENDER_CLASS {
+    position: relative;
+    top: 55px;
+    left: -558px;
+}
 
 /* end of newly added */
 
