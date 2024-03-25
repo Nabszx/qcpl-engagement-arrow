@@ -168,10 +168,13 @@ body {
 
 .GENDER_CLASS {
     position: relative;
-    top: 55px;
-    left: -558px;
+    top: 7.313rem;
+    left: -43.75rem;
 }
 
+.DISPLAY-FLEX {
+    display: flex;
+}
 /* end of newly added */
 
 .to-be-filled-up {
