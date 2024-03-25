@@ -23,11 +23,11 @@ if (isset ($_SESSION['user_id'])) {
                 $occupation = $row['occupation'];
                 $status = $row['status'];
                 $created_at = $row['created_at'];
-                
 
-                
+
+
                 $formatted_date = date("F d, Y", strtotime($birthdate));
-                
+
 
                 $maiden_middle_name = ""; // Initialize maiden middle name variable
                 $maiden_last_name = ""; // Initialize maiden last name variable
@@ -103,7 +103,6 @@ if (isset ($_SESSION['user_id'])) {
 
                 <div class="col-6" style="text-align: center;">
                     <div class="header1">
-
                         <h4 class="text-uppercase">FORM - E GOVERNMENT SERVICE</h4>
                         <h4 class="contact-header">CONTACT DETAILS</h4>
                     </div>
@@ -113,7 +112,7 @@ if (isset ($_SESSION['user_id'])) {
                     <div class="header">
                         <h4>Queue Number</h4>
                         <div class="card">
-                            <h4>
+                            <h4 class="q-number">
                                 <?= $queue_no ?>
                             </h4>
                         </div>
@@ -131,27 +130,33 @@ if (isset ($_SESSION['user_id'])) {
                             <p>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 flex-class-gender">
                         <div class="email-flex" style="margin-left:12px ;display:flex;">
                             <label>Purpose:</label>
                             <?php
-                                $service_sql = "SELECT client.client_id, GROUP_CONCAT(queue_details.service) AS services
+                            $service_sql = "SELECT client.client_id, GROUP_CONCAT(queue_details.service) AS services
                                                 FROM client
                                                 INNER JOIN queue_details ON client.client_id = queue_details.client_id
                                                 WHERE client.client_id = $client_id
                                                 GROUP BY client.client_id";
-                                $result = mysqli_query($conn, $service_sql);
-                                if (mysqli_num_rows($result) > 0) {
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        $services = $row['services'];
+                            $result = mysqli_query($conn, $service_sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $services = $row['services'];
 
-                                        echo '<p>' . $services . '</p>';
+                                    echo '<p>' . $services . '</p>';
 
-                                    }
                                 }
+                            }
                             ?>
-                            
+
                             <p>
+                        </div>
+                        <div class="GENDER_CLASS">
+                            <label>Gender:</label>
+                            <label>
+                                <?= $gender ?>
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -193,7 +198,7 @@ if (isset ($_SESSION['user_id'])) {
                         <div class="col-6">
                             <label>Birthdate :</label>
                             <label>
-                                <?=  $formatted_date ?>
+                                <?= $formatted_date ?>
                             </label>
                         </div>
 
@@ -227,7 +232,7 @@ if (isset ($_SESSION['user_id'])) {
                         </div>
                     </div>
                     <!-- suffix -->
-                    <div class="row">
+                    <div class="row NEW_MARGIN">
                         <div class="col-6">
                             <div class="test-suffix">
                                 <label>
@@ -246,6 +251,7 @@ if (isset ($_SESSION['user_id'])) {
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-6">
                             <div class="fill-0002">
                                 <label>Citizenship:</label>
@@ -259,6 +265,11 @@ if (isset ($_SESSION['user_id'])) {
                             </div> -->
                         </div>
                     </div>
+                    <!-- <div class="row">
+                        <div class="col NEWNEW"> -->
+
+                    <!-- </div>
+                    </div> -->
                 </div>
 
 
@@ -268,14 +279,14 @@ if (isset ($_SESSION['user_id'])) {
                         <div class="contact-1">
                             <label>Address:</label>
                             <p>________________________________________________________________________________
-                                    </p>
+                            </p>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="contact-2">
                             <label>Mobile:</label>
                             <p>______________________________________________
-                                    </p>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -295,17 +306,17 @@ if (isset ($_SESSION['user_id'])) {
                     <div class="col-8">
                         <div class="fill-area-fam">
                             <div class="fill-1">
-                                <label>Spouse Name:</label>
+                                <label>Spouse Full Maiden Name:</label>
                                 <p>_______________________________________________________________________________
                                 <p>
                             </div>
                             <div class="fill-2">
-                                <label>Spouse Birthplace:</label>
+                                <label>Spouse Maiden Birthplace:</label>
                                 <p>_______________________________________________________________________________
                                 <p>
                             </div>
                             <div class="fill-3">
-                                <label>Father Name:</label>
+                                <label>Father Full Name:</label>
                                 <p>_______________________________________________________________________________
                                 <p>
                             </div>
@@ -315,12 +326,12 @@ if (isset ($_SESSION['user_id'])) {
                                 <p>
                             </div>
                             <div class="fill-5">
-                                <label>Mother Name:</label>
+                                <label>Mother Full Maiden Name:</label>
                                 <p>_______________________________________________________________________________
                                 <p>
                             </div>
                             <div class="fill-6">
-                                <label>Mother Birth Place:</label>
+                                <label>Mother Maiden Birth Place:</label>
                                 <p>_______________________________________________________________________________
                                 <p>
                             </div>
@@ -381,16 +392,16 @@ if (isset ($_SESSION['user_id'])) {
         crossorigin="anonymous"></script>
     <script>
         window.onload = function () {
-         window.print();
-         };
+            window.print();
+        };
 
-         window.onafterprint = function (e) {
-             closePrintView();
-         };
+        window.onafterprint = function (e) {
+            closePrintView();
+        };
 
-         function closePrintView() {
-             window.location.href = 'queue.php';
-         }
+        function closePrintView() {
+            window.location.href = 'queue.php';
+        }
     </script>
 </body>
 
