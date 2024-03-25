@@ -104,7 +104,7 @@ if (isset ($_SESSION['user_id'])) {
                 <div class="col-6" style="text-align: center;">
                     <div class="header1">
 
-                        <h4 class="text-uppercase"><?= $service ?> FORM - E GOVERNMENT SERVICE</h4>
+                        <h4 class="text-uppercase">FORM - E GOVERNMENT SERVICE</h4>
                         <h4 class="contact-header">CONTACT DETAILS</h4>
                     </div>
                 </div>
@@ -124,14 +124,38 @@ if (isset ($_SESSION['user_id'])) {
 
 
                 <div class="row">
-                    <div class="col">
+                    <div class="col-6">
                         <div class="email-flex">
                             <label>Email Address:</label>
-                            <p>______________________________________________________________
+                            <p>____________________________________________
+                            <p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="email-flex" style="margin-left:12px ;display:flex;">
+                            <label>Purpose:</label>
+                            <?php
+                                $service_sql = "SELECT client.client_id, GROUP_CONCAT(queue_details.service) AS services
+                                                FROM client
+                                                INNER JOIN queue_details ON client.client_id = queue_details.client_id
+                                                WHERE client.client_id = $client_id
+                                                GROUP BY client.client_id";
+                                $result = mysqli_query($conn, $service_sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $services = $row['services'];
+
+                                        echo '<p>' . $services . '</p>';
+
+                                    }
+                                }
+                            ?>
+                            
                             <p>
                         </div>
                     </div>
                 </div>
+
 
                 <!-- first name and civil status -->
                 <div class="upperSectionMargin">
